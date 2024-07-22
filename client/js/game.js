@@ -172,7 +172,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/piller.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(4, 0.8, 6); // 壁1の位置を設定
+            wall1.position.set(4, 0.3, 6); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -196,7 +196,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(-4, 0.8, 6); // 壁1の位置を設定
+            wall2.position.set(-4, 0.3, 6); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -220,7 +220,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall3 = gltf.scene.clone();
-            wall3.position.set(4, 0.8, -6); // 壁1の位置を設定
+            wall3.position.set(4, 0.3, -6); // 壁1の位置を設定
             scene.add(wall3);
             wall3.updateMatrixWorld(); // 位置を更新
             wall3.traverse(child => {
@@ -244,7 +244,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall4 = gltf.scene.clone();
-            wall4.position.set(-4, 0.8, -6); // 壁2の位置を設定
+            wall4.position.set(-4, 0.3, -6); // 壁2の位置を設定
             scene.add(wall4);
             wall4.updateMatrixWorld(); // 位置を更新
             wall4.traverse(child => {
