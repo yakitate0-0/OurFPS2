@@ -169,10 +169,10 @@ export function init(receivedEnemyName, receivedPlayername) {
     }
 
     loader.load(
-        'assets/models/wall.glb',
+        'assets/models/piller.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(4, 1, 6); // 壁1の位置を設定
+            wall1.position.set(4, 0.8, 6); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -182,8 +182,8 @@ export function init(receivedEnemyName, receivedPlayername) {
                     wallBoxes.push(box); // 床のバウンディングボックスを追加
 
                     // バウンディングボックスの可視化用
-                    // const boxHelper = new THREE.BoxHelper(child, 0xffff00);
-                    // scene.add(boxHelper);
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
 
                     // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
@@ -196,7 +196,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(-4, 1, -6); // 壁2の位置を設定
+            wall2.position.set(-4, 0.8, 6); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -206,8 +206,56 @@ export function init(receivedEnemyName, receivedPlayername) {
                     wallBoxes.push(box); // 床のバウンディングボックスを追加
 
                     // バウンディングボックスの可視化用
-                    // const boxHelper = new THREE.BoxHelper(child, 0xffff00);
-                    // scene.add(boxHelper);
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
+
+                    // マテリアルの設定を確認
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map,
+                        color: child.material.color,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                }
+            });
+
+            const wall3 = gltf.scene.clone();
+            wall3.position.set(4, 0.8, -6); // 壁1の位置を設定
+            scene.add(wall3);
+            wall3.updateMatrixWorld(); // 位置を更新
+            wall3.traverse(child => {
+                if (child.isMesh) {
+                    const box = new THREE.Box3().setFromObject(child);
+                    collisionBoxes.push(box); // 配列に追加
+                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+
+                    // バウンディングボックスの可視化用
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
+
+                    // マテリアルの設定を確認
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map,
+                        color: child.material.color,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                }
+            });
+
+            const wall4 = gltf.scene.clone();
+            wall4.position.set(-4, 0.8, -6); // 壁2の位置を設定
+            scene.add(wall4);
+            wall4.updateMatrixWorld(); // 位置を更新
+            wall4.traverse(child => {
+                if (child.isMesh) {
+                    const box = new THREE.Box3().setFromObject(child);
+                    collisionBoxes.push(box); // 配列に追加
+                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+
+                    // バウンディングボックスの可視化用
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
 
                     // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
@@ -224,20 +272,45 @@ export function init(receivedEnemyName, receivedPlayername) {
     );
 
     loader.load(
-        'assets/models/warahouse.glb',
+        'assets/models/main.glb',
         function (gltf) {
-            gltf.scene.position.set(8, 0, 1.5); // 倉庫の位置を設定
-            scene.add(gltf.scene);
-            gltf.scene.updateMatrixWorld(); // 位置を更新
-            gltf.scene.traverse(child => {
+            const wall1 = gltf.scene.clone();
+            wall1.position.set(2, 1.5, 0); // 壁1の位置を設定
+            scene.add(wall1);
+            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
                     collisionBoxes.push(box); // 配列に追加
                     wallBoxes.push(box); // 床のバウンディングボックスを追加
 
                     // バウンディングボックスの可視化用
-                    // const boxHelper = new THREE.BoxHelper(child, 0xffff00);
-                    // scene.add(boxHelper);
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
+
+                    // マテリアルの設定を確認
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map,
+                        color: child.material.color,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                }
+            });
+
+            const wall2 = gltf.scene.clone();
+            wall2.position.set(-2, 1.5, 0); // 壁1の位置を設定
+            scene.add(wall2);
+            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.traverse(child => {
+                if (child.isMesh) {
+                    const box = new THREE.Box3().setFromObject(child);
+                    collisionBoxes.push(box); // 配列に追加
+                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+
+                    // バウンディングボックスの可視化用
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
 
                     // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
@@ -254,20 +327,21 @@ export function init(receivedEnemyName, receivedPlayername) {
     );
 
     loader.load(
-        'assets/models/house2.glb',
+        'assets/models/block.glb',
         function (gltf) {
-            gltf.scene.position.set(5, 0.01, -4); // house2の位置を設定
-            scene.add(gltf.scene);
-            gltf.scene.updateMatrixWorld(); // 位置を更新
-            gltf.scene.traverse(child => {
+            const wall1 = gltf.scene.clone();
+            wall1.position.set(0, 1, -2); // 壁1の位置を設定
+            scene.add(wall1);
+            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
                     collisionBoxes.push(box); // 配列に追加
                     wallBoxes.push(box); // 床のバウンディングボックスを追加
 
                     // バウンディングボックスの可視化用
-                    // const boxHelper = new THREE.BoxHelper(child, 0xffff00);
-                    // scene.add(boxHelper);
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
 
                     // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
@@ -278,26 +352,77 @@ export function init(receivedEnemyName, receivedPlayername) {
                     });
                 }
             });
-            modelLoaded();
-        },
-        onProgress
-    );
 
-    loader.load(
-        'assets/models/house1.glb',
-        function (gltf) {
-            gltf.scene.position.set(-4, 0.01, 2); // house1の位置を設定
-            scene.add(gltf.scene);
-            gltf.scene.updateMatrixWorld(); // 位置を更新
-            gltf.scene.traverse(child => {
+            const wall2 = gltf.scene.clone();
+            wall2.position.set(0, 1, 2); // 壁1の位置を設定
+            scene.add(wall2);
+            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
                     collisionBoxes.push(box); // 配列に追加
                     wallBoxes.push(box); // 床のバウンディングボックスを追加
 
                     // バウンディングボックスの可視化用
-                    // const boxHelper = new THREE.BoxHelper(child, 0xffff00);
-                    // scene.add(boxHelper);
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
+
+                    // マテリアルの設定を確認
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map,
+                        color: child.material.color,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                }
+            });
+
+
+            modelLoaded();
+        },
+        onProgress
+    );
+
+    loader.load(
+        'assets/models/fut.glb',
+        function (gltf) {
+            const wall1 = gltf.scene.clone();
+            wall1.position.set(0, 1, -2.5); // 壁1の位置を設定
+            scene.add(wall1);
+            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.traverse(child => {
+                if (child.isMesh) {
+                    const box = new THREE.Box3().setFromObject(child);
+                    collisionBoxes.push(box); // 配列に追加
+                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+
+                    // バウンディングボックスの可視化用
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
+
+                    // マテリアルの設定を確認
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map,
+                        color: child.material.color,
+                        metalness: 0.5,
+                        roughness: 0.5
+                    });
+                }
+            });
+
+            const wall2 = gltf.scene.clone();
+            wall2.position.set(0, 1, 2.5); // 壁1の位置を設定
+            scene.add(wall2);
+            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.traverse(child => {
+                if (child.isMesh) {
+                    const box = new THREE.Box3().setFromObject(child);
+                    collisionBoxes.push(box); // 配列に追加
+                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+
+                    // バウンディングボックスの可視化用
+                    const boxHelper = new THREE.BoxHelper(child, 0xffff00);
+                    scene.add(boxHelper);
 
                     // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
@@ -882,8 +1007,8 @@ export function animate() {
     }
 
     // フロアの境界チェック
-    const halfFloorSize_x = FLOOR_SIZE_x / 2;
-    const halfFloorSize_z = FLOOR_SIZE_z / 2;
+    const halfFloorSize_x = FLOOR_SIZE_x / 2 - 0.5;
+    const halfFloorSize_z = FLOOR_SIZE_z / 2 + 2 ;
     if (Math.abs(yawObject.position.x) > halfFloorSize_x || Math.abs(yawObject.position.z) > halfFloorSize_z) {
         yawObject.position.copy(oldPosition);
         velocity.x = 0;
