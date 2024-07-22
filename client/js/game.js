@@ -172,7 +172,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/piller.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(4, 0.3, 6); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -196,7 +196,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(-4, 0.3, 6); // 壁1の位置を設定
+            wall2.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -220,7 +220,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall3 = gltf.scene.clone();
-            wall3.position.set(4, 0.3, -6); // 壁1の位置を設定
+            wall3.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall3);
             wall3.updateMatrixWorld(); // 位置を更新
             wall3.traverse(child => {
@@ -244,7 +244,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall4 = gltf.scene.clone();
-            wall4.position.set(-4, 0.3, -6); // 壁2の位置を設定
+            wall4.position.set(0, 0, 0); // 壁2の位置を設定
             scene.add(wall4);
             wall4.updateMatrixWorld(); // 位置を更新
             wall4.traverse(child => {
@@ -275,7 +275,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/main.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(2, 1.5, 0); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -299,7 +299,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(-2, 1.5, 0); // 壁1の位置を設定
+            wall2.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -330,7 +330,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/block.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 1, -2); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -354,7 +354,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(0, 1, 2); // 壁1の位置を設定
+            wall2.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -387,7 +387,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/fut.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 1, -2.5); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall1);
             wall1.updateMatrixWorld(); // 位置を更新
             wall1.traverse(child => {
@@ -411,7 +411,7 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(0, 1, 2.5); // 壁1の位置を設定
+            wall2.position.set(0, 0, 0); // 壁1の位置を設定
             scene.add(wall2);
             wall2.updateMatrixWorld(); // 位置を更新
             wall2.traverse(child => {
@@ -1008,12 +1008,17 @@ export function animate() {
 
     // フロアの境界チェック
     const halfFloorSize_x = FLOOR_SIZE_x / 2 - 0.5;
-    const halfFloorSize_z = FLOOR_SIZE_z / 2 + 2 ;
-    if (Math.abs(yawObject.position.x) > halfFloorSize_x || Math.abs(yawObject.position.z) > halfFloorSize_z) {
-        yawObject.position.copy(oldPosition);
-        velocity.x = 0;
-        velocity.z = 0;
+    const halfFloorSize_z = FLOOR_SIZE_z / 2 + 2;
+    if (Math.abs(newPosition.x) > halfFloorSize_x) {
+        newPosition.x = Math.sign(newPosition.x) * halfFloorSize_x;
+        velocity.x *= -0.5; // x方向の速度を反転して減衰
     }
+
+    if (Math.abs(newPosition.z) > halfFloorSize_z) {
+        newPosition.z = Math.sign(newPosition.z) * halfFloorSize_z;
+        velocity.z *= -0.5; // z方向の速度を反転して減衰
+    }
+
 
     // しゃがみ状態を反映する
     if (isCrouching && !isJumping) {
