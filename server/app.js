@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 // ポートの設定
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3100;
 
 // 静的ファイルの提供
 app.use(express.static(path.join(__dirname, '../client')));
