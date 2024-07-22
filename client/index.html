@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPS Game</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@v0.151.3/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@v0.151.3/examples/jsm/",
+        "cannon-es": "https://cdn.jsdelivr.net/npm/cannon-es@0.18.0/dist/cannon-es.js"
+      }
+    }
+  </script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+  <div id="register-section" style="display:none;"></div>
+  <div id="matchmaking" style="display:none;">
+    <button id="joinMatchmakingBtn">Join Matchmaking</button>
+  </div>
+  <div id="loading-spinner" style="display:none;"></div>
+
+  <canvas id="FPSCanvas" style="display:none;"></canvas>
+  <div id="aiming" style="display:none;">
+    <img src="assets/images/aiming.png" alt=".">
+  </div>
+  <div id="damage-overlay"></div>
+  <div id="hit-indicator" class="hit-indicator">hit</div>
+
+  <div id="loading-screen">
+    <div id="loading-text">Loading: 0%</div>
+  </div>
+  <div id="hp-bar-container">
+    <div id="hp-bar"></div>
+  </div>
+
+  <div id="ammo-counter">Magazine : 10</div>
+
+  <audio id="backmusic" src="assets/sounds/fitemusic.mp3" loop></audio>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

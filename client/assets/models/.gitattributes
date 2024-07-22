@@ -1,0 +1,2 @@
+{stage.glb} filter=lfs diff=lfs merge=lfs -text
+stage.glb filter=lfs diff=lfs merge=lfs -text
