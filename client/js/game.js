@@ -6,7 +6,7 @@ let camera, scene, renderer;
 let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
 let canJump = true;
 let isJumping = false;
-let isCrouching = false; // しゃがみ状態のフラグ
+let isCrouching = false;
 let velocity = new THREE.Vector3();
 let direction = new THREE.Vector3();
 let spotLight;
@@ -18,10 +18,10 @@ let isReloading = false;
 let lastShotTime = 0;
 let nowEnemyPositions = {};
 let bearModel;
-let enemySpotLight; // 敵のスポットライト
+let enemySpotLight;
 let enemySpotLightHed;
-let bullets = []; // 弾丸を格納する配列
-let collisionBoxes = []; // 衝突判定の対象となるオブジェクトのバウンディングボックス配列
+let bullets = [];
+let collisionBoxes = [];
 let playerHp = 110; // 初期HP
 let pitchObject = new THREE.Object3D();
 let yawObject = new THREE.Object3D();
@@ -31,7 +31,7 @@ let shaking = 1; //横の球ブレ
 let damegepala = 10; //球のダメージ数
 let nomalLight = 0; //太陽の強さ
 let normalSpeed = 60.0;  //走る速さ
-let reloadTime = 2500; // リロード時間（ミリ秒）
+let reloadTime = 2500; // リロード時間
 let heal = false;
 let jumpSpeed = 9.0;
 let ant = 0;
@@ -39,8 +39,8 @@ let ant1 = 0;
 
 const bulletSpeed = 100;//　弾丸スピード
 const socket = io();
-const fireRate = 100; // 連射の間隔（ミリ秒）
-const totalModels = 5; // 読み込むモデルの総数
+const fireRate = 100; // 連射の間隔
+const totalModels = 5;
 const gravity = 30.0;
 const clock = new THREE.Clock();
 const crouchSpeed = 20.0; // しゃがみ時の速度
@@ -67,7 +67,6 @@ if (char == 0) {
     jumpSpeed = 10.0;
     reloadTime = 2000;
     nomalLight = 0.15;
-    console.log("you are nomal.");
 } else if (char == 1) {
     normalSpeed = 90;
 } else if (char == 2) {
@@ -88,15 +87,17 @@ if (char == 0) {
     damegepala = 20;
     reloadTime = 4000;
     ant = 1;
-} else {
-    // Do nothing or handle default case
 }
 
-let wallBoxes = []; // 壁のバウンディングボックスを格納する配列
+let wallBoxes = [];
 const guntimes = ammo;
 
 // 初期化関数
 export function init(receivedEnemyName, receivedPlayername) {
+
+    if (char == 6) {
+        socket.emit('breaker');
+    }
 
     enemyName = receivedEnemyName;
     playerName = receivedPlayername;
@@ -119,7 +120,7 @@ export function init(receivedEnemyName, receivedPlayername) {
     spotLight = new THREE.SpotLight(0xffffff, 3.5, 100, Math.PI / lightSize, 0.1, 1);
     spotLight.position.set(0, 0, 0);
     spotLight.target.position.set(0, 0, -1);
-    spotLight.visible = false; // 初期状態はオフ
+    spotLight.visible = false;
 
     camera.add(spotLight);
     camera.add(spotLight.target);
@@ -137,8 +138,8 @@ export function init(receivedEnemyName, receivedPlayername) {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-    renderer.domElement.style.position = 'absolute'; // 追加: canvasの位置を絶対位置に設定
-    renderer.domElement.style.top = '0'; // 追加: canvasのトップ位置を0に設定
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
 
     const ambientLight = new THREE.AmbientLight(0xffffff, nomalLight);
     scene.add(ambientLight);
@@ -151,7 +152,6 @@ export function init(receivedEnemyName, receivedPlayername) {
     function onProgress(xhr) {
         if (xhr.lengthComputable) {
             const percentComplete = Math.round((xhr.loaded / xhr.total) * 100);
-            // document.getElementById('loading-screen').style.display = "flex";
             document.getElementById('loading-text').innerText = `Loading: ${percentComplete}%`;
         }
     }
@@ -172,20 +172,19 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/piller.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 0, 0); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0);
             scene.add(wall1);
-            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.updateMatrixWorld();
             wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
                     scene.add(boxHelper);
 
-                    // マテリアルの設定を確認
                     child.material = new THREE.MeshStandardMaterial({
                         map: child.material.map,
                         color: child.material.color,
@@ -196,14 +195,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(18, 0, 0); // 壁1の位置を設定
+            wall2.position.set(18, 0, 0);
             scene.add(wall2);
-            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.updateMatrixWorld();
             wall2.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -919,7 +918,7 @@ socket.on('spawn', (data) => {
 });
 
 socket.on('anti', () => {
-    console.log("I am anti");
+    console.error("I am anti");
     ant1 = 1;
 });
 
