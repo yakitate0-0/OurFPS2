@@ -11,15 +11,14 @@ const io = socketIo(server);
 // ポートの設定
 const port = process.env.PORT || 3100;
 
-// 静的ファイルの提供
+// ファイルの提供
 app.use(express.static(path.join(__dirname, '../client')));
 
-// サーバーのルートアクセスでindex.htmlを返す
+// サーバーのルートアクセス
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-// WebSocketの設定
 setupWebSocket(io);
 
 // サーバーの起動
