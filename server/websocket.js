@@ -39,12 +39,12 @@ function setupWebSocket(io) {
 
                 io.emit('spawn', {
                     name: name,
-                    position: { x: 9, y: 1.5, z: -8 },
+                    position: { x: 10, y: 1.5, z: -9 },
                     rotation: { x: 0, y: Math.PI / 2, z: 0 }
                 });
                 io.emit('spawn', {
                     name: waitingPlayer,
-                    position: { x: -9, y: 1.5, z: 8 },
+                    position: { x: -10, y: 1.5, z: 9 },
                     rotation: { x: 0, y: -Math.PI / 2, z: 0 }
                 });
 
