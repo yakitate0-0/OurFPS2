@@ -219,14 +219,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall3 = gltf.scene.clone();
-            wall3.position.set(0, 0, 14); // 壁1の位置を設定
+            wall3.position.set(0, 0, 14);
             scene.add(wall3);
-            wall3.updateMatrixWorld(); // 位置を更新
+            wall3.updateMatrixWorld();
             wall3.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -243,14 +243,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall4 = gltf.scene.clone();
-            wall4.position.set(18, 0, 14); // 壁2の位置を設定
+            wall4.position.set(18, 0, 14);
             scene.add(wall4);
-            wall4.updateMatrixWorld(); // 位置を更新
+            wall4.updateMatrixWorld();
             wall4.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -274,14 +274,14 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/main.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 0, 0); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0);
             scene.add(wall1);
-            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.updateMatrixWorld();
             wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -298,14 +298,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(9, 0, 0); // 壁1の位置を設定
+            wall2.position.set(9, 0, 0);
             scene.add(wall2);
-            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.updateMatrixWorld();
             wall2.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -329,14 +329,14 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/block.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 0, 0); // 壁1の位置を設定
+            wall1.position.set(0, 0, 0);
             scene.add(wall1);
-            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.updateMatrixWorld();
             wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -353,14 +353,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(0, 0, 10); // 壁1の位置を設定
+            wall2.position.set(0, 0, 10);
             scene.add(wall2);
-            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.updateMatrixWorld();
             wall2.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -386,14 +386,14 @@ export function init(receivedEnemyName, receivedPlayername) {
         'assets/models/fut.glb',
         function (gltf) {
             const wall1 = gltf.scene.clone();
-            wall1.position.set(0, 0, 1); // 壁1の位置を設定
+            wall1.position.set(0, 0, 1);
             scene.add(wall1);
-            wall1.updateMatrixWorld(); // 位置を更新
+            wall1.updateMatrixWorld();
             wall1.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -410,14 +410,14 @@ export function init(receivedEnemyName, receivedPlayername) {
             });
 
             const wall2 = gltf.scene.clone();
-            wall2.position.set(0, 0, 19); // 壁1の位置を設定
+            wall2.position.set(0, 0, 19);
             scene.add(wall2);
-            wall2.updateMatrixWorld(); // 位置を更新
+            wall2.updateMatrixWorld();
             wall2.traverse(child => {
                 if (child.isMesh) {
                     const box = new THREE.Box3().setFromObject(child);
-                    collisionBoxes.push(box); // 配列に追加
-                    wallBoxes.push(box); // 床のバウンディングボックスを追加
+                    collisionBoxes.push(box);
+                    wallBoxes.push(box);
 
                     // バウンディングボックスの可視化用
                     const boxHelper = new THREE.BoxHelper(child, 0xffff00);
@@ -440,9 +440,8 @@ export function init(receivedEnemyName, receivedPlayername) {
     loader.load(
         'assets/models/floor.glb',
         function (gltf) {
-            gltf.scene.position.set(0, 0, 0); // floorの位置を設定
+            gltf.scene.position.set(0, 0, 0);
             scene.add(gltf.scene);
-            // ロード完了後にロード画面を非表示にする
             modelLoaded();
         },
         onProgress
@@ -457,16 +456,15 @@ export function init(receivedEnemyName, receivedPlayername) {
 
             // 敵のスポットライトを初期化
             enemySpotLight = new THREE.SpotLight(0xffffff, 3.5, 100, Math.PI / lightSize, 0.1, 1);
-            enemySpotLight.visible = false; // 初期状態はオフ
+            enemySpotLight.visible = false;
             scene.add(enemySpotLight);
             scene.add(enemySpotLight.target);
 
-            enemySpotLightHed = new THREE.SpotLight(0xffffff, 3.5, 100, Math.PI / 10, 0.2, 1); // 照射範囲を狭く
-            enemySpotLightHed.visible = false; // 初期状態はオフ
+            enemySpotLightHed = new THREE.SpotLight(0xffffff, 3.5, 100, Math.PI / 10, 0.2, 1);
+            enemySpotLightHed.visible = false;
             scene.add(enemySpotLightHed);
             scene.add(enemySpotLightHed.target);
 
-            // ロード完了後にロード画面を非表示にする
             modelLoaded();
         },
         onProgress
@@ -483,20 +481,19 @@ export function init(receivedEnemyName, receivedPlayername) {
                     // 現在のマテリアルのテクスチャを取得
                     const texture = child.material.map;
 
-                    // 光の影響を受けないマテリアルに変更
                     child.material = new THREE.MeshStandardMaterial({
                         map: texture,
-                        color: 0x005243, // 黒色
-                        metalness: 1.0, // 金属っぽさ
-                        roughness: 0.2 // 表面の粗さを調整
+                        color: 0x005243,
+                        metalness: 1.0,
+                        roughness: 0.2
                     });
                 }
             });
 
             // カメラに追加してプレイヤー視点にする
             camera.add(gunModel);
-            gunModel.position.set(1, -0.5, -1); // カメラからの相対位置を設定
-            gunModel.rotation.set(0, Math.PI * 3 / 2, 0); // 銃の向きを調整（必要に応じて調整）
+            gunModel.position.set(1, -0.5, -1);
+            gunModel.rotation.set(0, Math.PI * 3 / 2, 0);
             modelLoaded();
         },
         onProgress
@@ -537,7 +534,7 @@ export function init(receivedEnemyName, receivedPlayername) {
         canvas.requestPointerLock();
     });
 
-    updateHpBar();//HPの初期化
+    updateHpBar();
 
 }
 
@@ -545,7 +542,7 @@ export function init(receivedEnemyName, receivedPlayername) {
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
-        loadingScreen.style.display = 'flex'; // 表示
+        loadingScreen.style.display = 'flex';
     }
 }
 
@@ -553,7 +550,7 @@ function showLoadingScreen() {
 function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
-        loadingScreen.style.display = 'none'; // 非表示
+        loadingScreen.style.display = 'none';
     }
     document.getElementById('aiming').style.display = 'block';
 }
@@ -602,8 +599,8 @@ export function onKeyDown(event) {
             break;
         case 'ShiftLeft':
             if (!isJumping) {
-                isCrouching = true; // しゃがみ状態を有効化
-                yawObject.position.y = crouchHeight; // 直接高さを変更
+                isCrouching = true;
+                yawObject.position.y = crouchHeight;
             }
             break;
         case 'KeyR':
@@ -640,26 +637,25 @@ export function onKeyUp(event) {
             moveRight = false;
             break;
         case 'ShiftLeft':
-            isCrouching = false; // しゃがみ状態を解除
+            isCrouching = false;
             if (!isJumping) {
-                yawObject.position.y = normalHeight; // 直接高さを変更
+                yawObject.position.y = normalHeight;
             }
             break;
     }
 }
 
 function onMouseDown(event) {
-    if (event.button === 0) { // 左クリック
+    if (event.button === 0) {
         isShooting = true;
-    } else if (event.button === 2) { // 右クリック
+    } else if (event.button === 2) {
         spotLight.visible = !spotLight.visible;
-        // スポットライトの状態をサーバーに送信
         updatePlayerPosition();
     }
 }
 
 function onMouseUp(event) {
-    if (event.button === 0) { // 左クリック
+    if (event.button === 0) {
         isShooting = false;
     }
 }
@@ -670,10 +666,9 @@ function shoot() {
         shoot_sound.currentTime = 0;
         shoot_sound.play();
         socket.emit('gunsound');
-        // 実際の発砲処理をここに追加
         createBullet();
         ammo--;
-        updateAmmoCount(); // Update ammo count display
+        updateAmmoCount();
         applyRecoil();
         if (ammo === 0) {
             reload();
@@ -684,7 +679,7 @@ function shoot() {
 function applyRecoil() {
     const recoilAmount = 0.05;
     pitchObject.rotation.x += recoilAmount;
-    yawObject.rotation.y += (Math.random() - 0.5) * recoilAmount * shaking; // 左右のブレを少し小さくする
+    yawObject.rotation.y += (Math.random() - 0.5) * recoilAmount * shaking;
 }
 
 function reload() {
@@ -698,7 +693,7 @@ function reload() {
             ammo = guntimes;
             isReloading = false;
             console.log("Reload complete!");
-            updateAmmoCount(); // Update ammo count display after reloading
+            updateAmmoCount();
             ready_sound.play();
         }, reloadTime);
     }
@@ -751,12 +746,10 @@ function moveBullets(delta) {
 }
 
 socket.on('updatePositions', data => {
-    // console.log('Received updated positions:', data); 
     nowEnemyPositions = data; // すべてのプレイヤーの位置情報を更新
 
     // 敵の位置情報をBearモデルに反映
     if (bearModel && enemyName) {
-        // console.log(`Updating enemy position for ${enemyName}`); 
         const enemyPosition = data[enemyName].position;
         const enemyRotation = data[enemyName].rotation;
 
@@ -793,10 +786,9 @@ function checkCollisions() {
         collisionBoxes.forEach((objectBox) => {
             if (bulletBox.intersectsBox(objectBox) && !bulletRemoved) {
                 console.log('Bullet hit an object!');
-                // 弾丸を削除
-                bullet.parent.remove(bullet); // カメラ以外に追加された場合に対応
+                bullet.parent.remove(bullet);
                 bullets.splice(bulletIndex, 1);
-                bulletRemoved = true; // すでに衝突した弾丸についてはこれ以上処理しない
+                bulletRemoved = true;
             }
         });
 
@@ -806,13 +798,13 @@ function checkCollisions() {
             if (bulletBox.intersectsBox(bearBox)) {
                 showHitIndicator();
                 // 弾丸を削除
-                bullet.parent.remove(bullet); // カメラ以外に追加された場合に対応
+                bullet.parent.remove(bullet);
                 bullets.splice(bulletIndex, 1);
-                bulletRemoved = true; // すでに衝突した弾丸についてはこれ以上処理しない
+                bulletRemoved = true;
 
                 // 敵にダメージを通告
                 if (enemyName) {
-                    console.log('Hit bear! Sending hit to enemyName:', enemyName); // デバッグログを追加
+                    console.log('Hit bear! Sending hit to enemyName:', enemyName);
                     socket.emit('hit', {
                         enemyName: enemyName,
                         damage: damegepala // ダメージ量を指定
@@ -863,26 +855,26 @@ function showHitIndicator() {
     const hitIndicator = document.getElementById('hit-indicator');
     hitIndicator.style.display = 'block';
     hitIndicator.style.opacity = '1';
-    hitIndicator.style.animation = 'none'; // アニメーションをリセット
+    hitIndicator.style.animation = 'none';
     requestAnimationFrame(() => {
         hitIndicator.style.animation = '';
     });
     setTimeout(() => {
         hitIndicator.style.display = 'none';
-    }, 500); // 0.5秒後に非表示にする
+    }, 500);
 }
 
 function showDamageOverlay() {
     const damageOverlay = document.getElementById('damage-overlay');
     damageOverlay.style.display = 'block';
     damageOverlay.style.opacity = '1';
-    damageOverlay.style.animation = 'none'; // アニメーションをリセット
+    damageOverlay.style.animation = 'none'; 
     requestAnimationFrame(() => {
         damageOverlay.style.animation = '';
     });
     setTimeout(() => {
         damageOverlay.style.display = 'none';
-    }, 500); // 0.5秒後に非表示にする
+    }, 500);
 }
 
 // プレイヤの位置を送信する
@@ -1026,7 +1018,6 @@ export function animate() {
         yawObject.position.y = normalHeight;
     }
 
-    // 以下は変更なし
     if (isShooting && currentTime - lastShotTime > fireRate) {
         shoot();
         lastShotTime = currentTime;
