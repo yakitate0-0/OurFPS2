@@ -46,7 +46,7 @@ document.getElementById('joinMatchmakingBtn').addEventListener('click', () => {
 socket.on('matchFound', data => {
     const gameId = data.gameId;
     if (window.myname == data.playerName) {
-        window.enemyName = data.opponentName; // グローバル変数に格納
+        window.enemyName = data.opponentName;
     } else {
         window.enemyName = data.playerName;
     }
@@ -58,8 +58,7 @@ socket.on('matchFound', data => {
     document.getElementById('aiming').style.display = 'block';
     document.getElementById('hp-bar-container').style.display = 'flex';
 
-    // ゲームを開始
-    init(window.enemyName, window.myname); // 初期化関数に敵の名前を渡す
+    init(window.enemyName, window.myname); 
     animate();
 });
 
@@ -75,6 +74,5 @@ socket.on('redirect', data => {
     console.log("Redirecting to port 8080");
     const host = window.location.hostname;
     const newPort = 8080;
-    // クライアント側でポート8080にリダイレクト
     window.location.href = `http://${host}:${newPort}/xammpFPS/?result=${encodeURIComponent(loser)}&playerid=${playerName}`;
 });

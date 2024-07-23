@@ -48,7 +48,7 @@ function setupWebSocket(io) {
                     rotation: { x: 0, y: -Math.PI / 2, z: 0 }
                 });
 
-                waitingPlayer = null; // マッチングが成立したのでリセット
+                waitingPlayer = null;
             } else {
                 waitingPlayer = name;
                 socket.emit('waiting', 'Waiting for an opponent...');
@@ -91,13 +91,12 @@ function setupWebSocket(io) {
         socket.on('heal', data => {
             const { playerName, healAmount } = data;
             if (players[playerName]) {
-                players[playerName].hp = Math.min(players[playerName].hp + healAmount, 110); // HPは100を超えないように
+                players[playerName].hp = Math.min(players[playerName].hp + healAmount, 110);
                 io.emit('healed', { playerName: playerName, newHp: players[playerName].hp });
             }
         });
 
         socket.on('disconnect', () => {
-            // 名前を使ってプレイヤーを識別
             const name = Object.keys(players).find(key => players[key].socketId === socket.id);
             if (name) {
                 console.log('User disconnected:', name);
