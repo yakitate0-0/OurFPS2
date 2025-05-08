@@ -1,6 +1,6 @@
 # ゲーム名 : NIGHT BREAKER
 
-Windows / Mac 
+![windows / mac](https://img.shields.io/badge/Windows-Mac-blue)
 
 *************************************
 ## 操作方法
